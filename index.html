@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Suvendu Ojha | Research Profile</title>
+<style id="maincss">
+:root{--bg:#FAFAF8;--w:#fff;--navy:#1e3a5f;--blue:#2d5a8e;--gold:#c9952a;--txt:#1a1a1a;--mu:#6b7280;--bd:#e8e4dc;--sh:0 2px 20px rgba(0,0,0,.09);--r:12px;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;}
+nav{position:sticky;top:0;background:rgba(250,250,248,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd);padding:12px 28px;display:flex;justify-content:space-between;align-items:center;z-index:100;gap:10px;flex-wrap:wrap;}
+.nname{font-weight:800;color:var(--navy);font-size:.95rem;white-space:nowrap;}
+.nlinks{display:flex;gap:14px;list-style:none;flex-wrap:wrap;}
+.nlinks a{text-decoration:none;color:var(--mu);font-size:.69rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;transition:color .2s;}
+.nlinks a:hover{color:var(--navy);}
+.nav-btns{display:flex;gap:8px;align-items:center;}
+.ebtn{padding:5px 14px;border:1.5px solid var(--bd);background:transparent;color:var(--mu);border-radius:6px;font-size:.72rem;font-weight:700;cursor:pointer;opacity:.5;transition:all .2s;}
+.ebtn:hover{opacity:1;border-color:var(--navy);color:var(--navy);}
+#dlBtn{display:none;padding:5px 14px;border:1.5px solid var(--gold);background:transparent;color:var(--gold);border-radius:6px;font-size:.72rem;font-weight:700;cursor:pointer;transition:all .2s;}
+#dlBtn:hover{background:var(--gold);color:#fff;}
+section{max-width:940px;margin:0 auto;padding:62px 28px;}
+.slbl{font-size:.67rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
+.stit{font-size:1.62rem;font-weight:800;color:var(--navy);margin-bottom:28px;padding-bottom:11px;border-bottom:2px solid var(--bd);}
+.sdiv{border-top:1px solid var(--bd);}
+#about{padding-top:70px;padding-bottom:70px;}
+.hrow{display:flex;gap:42px;align-items:flex-start;flex-wrap:wrap;}
+.hphoto-wrap{position:relative;flex-shrink:0;width:170px;height:170px;}
+.hphoto{width:170px;height:170px;border-radius:50%;object-fit:cover;object-position:top center;border:4px solid var(--bd);box-shadow:var(--sh);display:none;}
+.hini{width:170px;height:170px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--blue));display:flex;align-items:center;justify-content:center;font-size:2.8rem;color:#fff;font-weight:800;box-shadow:var(--sh);}
+.photo-over{position:absolute;inset:0;border-radius:50%;background:rgba(0,0,0,.5);color:#fff;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;display:none;align-items:center;justify-content:center;text-align:center;line-height:1.6;}
+.edit-mode .photo-over{display:flex;}
+.photo-over input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;border-radius:50%;width:100%;height:100%;}
+.htxt h1{font-size:2.35rem;font-weight:800;color:var(--navy);line-height:1.12;margin-bottom:6px;}
+.ttl{font-size:1rem;color:var(--blue);font-weight:600;margin-bottom:2px;}
+.ins{font-size:.9rem;color:var(--mu);margin-bottom:16px;}
+.bio{font-size:.92rem;line-height:1.82;color:#374151;max-width:530px;}
+.chips{display:flex;gap:9px;margin-top:16px;flex-wrap:wrap;}
+.chip{padding:5px 15px;background:var(--navy);color:#fff;border-radius:100px;font-size:.75rem;font-weight:700;text-decoration:none;transition:background .2s;}
+.chip:hover{background:var(--blue);}
+.tl{position:relative;padding-left:24px;}
+.tl::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--bd);}
+.tli{position:relative;margin-bottom:24px;}
+.tli::before{content:'';position:absolute;left:-21px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid var(--w);box-shadow:0 0 0 2px var(--gold);}
+.tli h3{font-size:.94rem;font-weight:700;color:var(--navy);}
+.tli .si{font-size:.84rem;color:var(--blue);margin:2px 0;}
+.tli .yr{font-size:.76rem;color:var(--mu);}
+.tli .note{font-size:.77rem;color:#374151;margin-top:3px;font-style:italic;}
+.tags{display:flex;flex-wrap:wrap;gap:9px;}
+.tag{padding:7px 17px;background:var(--w);border:1.5px solid var(--bd);border-radius:100px;font-size:.84rem;color:var(--navy);font-weight:600;}
+.plist{display:flex;flex-direction:column;gap:14px;}
+.pcard{display:flex;background:var(--w);border:1px solid var(--bd);border-radius:10px;overflow:hidden;box-shadow:0 1px 8px rgba(0,0,0,.05);transition:box-shadow .2s,transform .15s;border-left:4px solid var(--blue);}
+.pcard.pat{border-left-color:var(--gold);}
+.pcard.prep{border-left-color:#9ca3af;opacity:.85;}
+.pcard:hover{box-shadow:var(--sh);transform:translateY(-2px);}
+.pslot{position:relative;width:80px;min-height:94px;flex-shrink:0;background:#f3f4f6;border-right:1px solid var(--bd);overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.pslot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+.pslot-ph{display:flex;flex-direction:column;align-items:center;gap:3px;color:#d1d5db;padding:8px;text-align:center;pointer-events:none;}
+.pslot-ph span{font-size:1.3rem;}
+.pslot-ph small{font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;line-height:1.3;}
+.pslot-ov{position:absolute;inset:0;background:rgba(0,0,0,.5);color:#fff;font-size:.58rem;font-weight:700;display:none;align-items:center;justify-content:center;text-transform:uppercase;letter-spacing:.04em;pointer-events:none;}
+.pslot input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;display:none;width:100%;height:100%;}
+.edit-mode .pslot{cursor:pointer;}
+.edit-mode .pslot:hover .pslot-ov{display:flex;}
+.edit-mode .pslot input[type=file]{display:block;}
+.pdet{flex:1;padding:16px 18px;}
+.ptit{font-size:.93rem;font-weight:700;color:var(--navy);margin-bottom:5px;line-height:1.4;}
+.pau{font-size:.82rem;color:var(--mu);margin-bottom:7px;}
+.pmeta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.pj{font-size:.8rem;font-style:italic;color:var(--blue);font-weight:600;}
+.py{font-size:.75rem;background:#EFF6FF;color:var(--blue);padding:2px 9px;border-radius:4px;font-weight:700;}
+.pdoi{font-size:.75rem;color:var(--gold);text-decoration:none;font-weight:600;}
+.pdoi:hover{text-decoration:underline;}
+.pbadge{font-size:.72rem;padding:2px 9px;border-radius:4px;font-weight:700;}
+.pbadge.first{background:#ECFDF5;color:#065f46;}
+.pbadge.rev{background:#F5F3FF;color:#4c1d95;}
+.pbadge.collab{background:#FFF7ED;color:#9a3412;}
+.pbadge.prep{background:#F3F4F6;color:#6b7280;}
+.pno{font-size:.74rem;background:#FEF3C7;color:#92400e;padding:2px 9px;border-radius:4px;font-weight:700;}
+.cgrid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:13px;}
+.icard{background:var(--w);border:1px solid var(--bd);border-radius:10px;padding:16px 18px;box-shadow:0 1px 8px rgba(0,0,0,.05);}
+.icard.gold{border-left:4px solid var(--gold);}
+.icard.blue{border-left:4px solid var(--blue);}
+.icard h3{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:3px;}
+.icard .sub{font-size:.82rem;color:var(--blue);margin-bottom:2px;}
+.icard .det{font-size:.76rem;color:var(--mu);line-height:1.55;}
+.icard a{color:var(--gold);font-size:.75rem;text-decoration:none;}
+.icard a:hover{text-decoration:underline;}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+.skill-card{display:flex;gap:14px;background:var(--w);border:1px solid var(--bd);border-radius:10px;padding:18px;box-shadow:0 1px 8px rgba(0,0,0,.05);transition:box-shadow .2s,transform .15s;}
+.skill-card:hover{box-shadow:var(--sh);transform:translateY(-2px);}
+.skill-icon{font-size:1.6rem;flex-shrink:0;margin-top:2px;}
+.skill-body h3{font-size:.88rem;font-weight:700;color:var(--navy);margin-bottom:5px;}
+.skill-body p{font-size:.8rem;color:#374151;line-height:1.65;}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;z-index:999;backdrop-filter:blur(4px);}
+.modal-bg.show{display:flex;}
+.modal{background:var(--w);border-radius:var(--r);padding:32px;width:320px;box-shadow:0 20px 60px rgba(0,0,0,.2);text-align:center;}
+.modal h2{color:var(--navy);font-size:1.1rem;margin-bottom:8px;}
+.modal p{color:var(--mu);font-size:.83rem;margin-bottom:20px;}
+.modal input{width:100%;padding:10px 14px;border:1.5px solid var(--bd);border-radius:8px;font-size:.9rem;text-align:center;letter-spacing:.15em;font-family:inherit;}
+.modal input:focus{outline:none;border-color:var(--blue);}
+.merr{color:#dc2626;font-size:.78rem;margin-top:8px;min-height:18px;}
+.mbtn{width:100%;margin-top:14px;padding:11px;background:var(--navy);color:#fff;border:none;border-radius:8px;font-size:.9rem;font-weight:700;cursor:pointer;}
+.mbtn:hover{background:var(--blue);}
+.mcan{background:none;border:none;color:var(--mu);font-size:.82rem;margin-top:10px;cursor:pointer;display:block;width:100%;}
+footer{text-align:center;padding:24px;border-top:1px solid var(--bd);color:var(--mu);font-size:.74rem;}
+</style>
+</head>
+<body>
+
+<div class="modal-bg" id="pwModal">
+  <div class="modal">
+    <h2>🔒 Editor Access</h2>
+    <p>Enter your password to unlock editing and image uploads.</p>
+    <input type="password" id="pwInput" placeholder="••••••••" maxlength="30">
+    <div class="merr" id="pwErr"></div>
+    <button class="mbtn" id="pwOk">Unlock</button>
+    <button class="mcan" id="pwCan">Cancel</button>
+  </div>
+</div>
+
+<nav>
+  <span class="nname">Suvendu Ojha</span>
+  <ul class="nlinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#patents">Patents</a></li>
+    <li><a href="#mentorship">Mentorship</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+  <div class="nav-btns">
+    <button id="dlBtn" title="Download standalone HTML file">📥 Download Page</button>
+    <button class="ebtn" id="editBtn" style="display:none">🔒 Edit</button>
+  </div>
+</nav>
+
+<section id="about">
+  <div class="hrow">
+    <div class="hphoto-wrap">
+      <img class="hphoto" id="hphoto" alt="Suvendu Ojha">
+      <div class="hini" id="hini">SO</div>
+      <div class="photo-over">📷 Change Photo
+        <input type="file" id="photoFile" accept="image/*">
+      </div>
+    </div>
+    <div class="htxt">
+      <h1>Suvendu Ojha</h1>
+      <div class="ttl">Research Associate-I &nbsp;|&nbsp; PhD in Biotechnology (Microbiology)</div>
+      <div class="ins">Bacterial Cell Division &amp; Antimicrobial Resistance Lab · BRIC-Institute of Life Sciences, Bhubaneswar</div>
+      <p class="bio">Suvendu Ojha is a microbiologist and drug discovery researcher specialising in efflux-mediated antimicrobial resistance and transcriptional regulation of resistance and virulence in <em>Staphylococcus aureus</em>. His work focuses on repurposing FDA-approved drugs as efflux pump inhibitors to restore antibiotic susceptibility in multidrug-resistant pathogens, combining biochemical, molecular, and in vivo approaches. He is seeking a postdoctoral position to advance his expertise in antimicrobial resistance mechanisms and novel therapeutic strategies against drug-resistant bacterial pathogens.</p>
+      <div class="chips">
+        <a class="chip" href="mailto:osuvendu@gmail.com">✉ Email</a>
+        <a class="chip" href="https://scholar.google.com/citations?user=fNli2RcAAAAJ&hl=en" target="_blank">Google Scholar</a>
+        <a class="chip" href="https://orcid.org/0000-0003-0439-5065" target="_blank">ORCID</a>
+        <a class="chip" href="https://www.linkedin.com/in/suvenduojha" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="sdiv"></div>
+
+<section id="education">
+  <div class="slbl">Academic Background</div>
+  <div class="stit">Education</div>
+  <div class="tl">
+    <div class="tli">
+      <h3>Ph.D. in Biotechnology (Microbiology)</h3>
+      <div class="si">BRIC-Institute of Life Sciences, Bhubaneswar, India</div>
+      <div class="yr">2019 – September 2025</div>
+      <div class="note">Supervisor: Dr. Tushar Kant Beuria · Thesis: Targeting Efflux-Mediated Drug Resistance in <em>S. aureus</em> to Enhance the Therapeutic Potential of Existing Antibiotics</div>
+    </div>
+    <div class="tli">
+      <h3>Master of Science in Botany (Specialisation: Biochemistry)</h3>
+      <div class="si">School of Life Sciences, Sambalpur University, India</div>
+      <div class="yr">Completed March 2018</div>
+    </div>
+    <div class="tli">
+      <h3>Bachelor of Science in Botany</h3>
+      <div class="si">Udayanath Autonomous College of Science and Technology, Cuttack, India</div>
+      <div class="yr">Completed March 2016</div>
+    </div>
+  </div>
+</section>
+<div class="sdiv"></div>
+
+<section id="research">
+  <div class="slbl">What I Work On</div>
+  <div class="stit">Research Interests</div>
+  <div class="tags">
+    <div class="tag">Efflux-Mediated Antimicrobial Resistance</div>
+    <div class="tag">Transcriptional Regulation of Resistance</div>
+    <div class="tag"><em>Staphylococcus aureus</em> Biology</div>
+    <div class="tag">Drug Repurposing</div>
+    <div class="tag">Efflux Pump Inhibitors</div>
+    <div class="tag">Antimicrobial Drug Discovery</div>
+    <div class="tag">Persister Cells &amp; Antibiotic Tolerance</div>
+    <div class="tag">Host–Pathogen Interactions</div>
+    <div class="tag">Bacterial Pathogenesis</div>
+    <div class="tag">Polymicrobial Infection Dynamics</div>
+    <div class="tag">Novel Antimicrobial Targets</div>
+    <div class="tag">Biofilm Biology</div>
+  </div>
+</section>
+<div class="sdiv"></div>
+
+<section id="publications">
+  <div class="slbl">Peer-Reviewed Work</div>
+  <div class="stit">Publications</div>
+  <div class="plist">
+    <div class="pcard"><div class="pslot" data-slot="0"><div class="pslot-ph"><span>🖼</span><small>Journal Cover</small></div><div class="pslot-ov">📤 Upload</div><input type="file" accept="image/*"></div><div class="pdet"><div class="ptit">Efflux pump modulation by Montelukast and its roles in restoring antibiotic susceptibility in multidrug-resistant <em>Staphylococcus aureus</em></div><div class="pau">Ojha S, Sinsinwar S, Chatterjee P, Biswal S, Pradhan P, Beuria TK</div><div class="pmeta"><span class="pj">EBioMedicine</span><span class="py">2025</span><span class="pbadge first">First Author</span><a class="pdoi" href="https://doi.org/10.1016/j.ebiom.2025.105658" target="_blank">DOI ↗</a></div></div></div>
+    <div class="pcard"><div class="pslot" data-slot="1"><div class="pslot-ph"><span>🖼</span><small>Journal Cover</small></div><div class="pslot-ov">📤 Upload</div><input type="file" accept="image/*"></div><div class="pdet"><div class="ptit">Inhibition of efflux pumps by FDA-approved drugs oxiconazole and sertaconazole restores antibiotic susceptibility in multidrug-resistant <em>S. aureus</em></div><div class="pau">Ojha S, Chatterjee P, Beuria TK</div><div class="pmeta"><span class="pj">Antimicrobial Agents and Chemotherapy</span><span class="py">2025</span><span class="pbadge first">First Author</span><a class="pdoi" href="https://doi.org/10.1128/aac.00320-25" target="_blank">DOI ↗</a></div></div></div>
+    <div class="pcard"><div class="pslot" data-slot="2"><div class="pslot-ph"><span>🖼</span><small>Journal Cover</small></div><div class="pslot-ov">📤 Upload</div><input type="file" accept="image/*"></div><div class="pdet"><div class="ptit">10058-F4 Mediated inhibition of the biofilm formation in multidrug-resistant <em>Staphylococcus aureus</em></div><div class="pau">Dodia H, Ojha S, Chatterjee P, Beuria TK</div><div class="pmeta"><span class="pj">Biofilm</span><span class="py">2025</span><span class="pbadge first">Co-First Author</span><a class="pdoi" href="https://doi.org/10.1016/j.bioflm.2025.100307" target="_blank">DOI ↗</a></div></div></div>
+    <div class="pcard"><div class="pslot" data-slot="3"><div class="pslot-ph"><span>🖼</span><small>Journal Cover</small></div><div class="pslot-ov">📤 Upload</div><input type="file" accept="image/*"></div><div class="pdet"><div class="ptit">Efflux-Mediated Resistance in <em>Staphylococcus aureus</em>: Challenges and Opportunities for Therapeutic Intervention</div><div class="pau">Ojha S, Beuria TK</div><div class="pmeta"><span class="pj">Indian Journal of Microbiology</span><span class="py">2026</span><span class="pbadge rev">Review</span><a class="pdoi" href="https://doi.org/10.1007/s12088-026-01545-9" target="_blank">DOI ↗</a></div></div></div>
+    <div class="pcard"><div class="pslot" data-slot="4"><div class="pslot-ph"><span>🖼</span><small>Journal Cover</small></div><div class="pslot-ov">📤 Upload</div><input type="file" accept="image/*"></div><div class="pdet"><div class="ptit">Thymol as Biofilm and Efflux Pump Inhibitor: A Dual-Action Approach to Combat <em>Mycobacterium tuberculosis</em></div><div class="pau">Shankar Das B, Sarangi A, Pahuja I, Singh V, Ojha S, Giri S, Bhaskar A, Bhattacharya D</div><div class="pmeta"><span class="pj">Cell Biochemistry and Function</span><span class="py">2024</span><span class="pbadge collab">Collaborative</span><a class="pdoi" href="https://doi.org/10.1002/cbf.70030" target="_blank">DOI ↗</a></div></div></div>
+    <div class="pcard"><div class="pslot" data-slot="5"><div class="pslot-ph"><span>🖼</span><small>Journal Cover</small></div><div class="pslot-ov">📤 Upload</div><input type="file" accept="image/*"></div><div class="pdet"><div class="ptit">Ajoene: a natural compound with enhanced antimycobacterial and antibiofilm properties mediated by efflux pump modulation and ROS generation against <em>M. smegmatis</em></div><div class="pau">Sarangi A, Das BS, Pahuja I, Ojha S, Singh V, Giri S, Bhaskar A, Bhattacharya D</div><div class="pmeta"><span class="pj">Archives of Microbiology</span><span class="py">2024</span><span class="pbadge collab">Collaborative</span><a class="pdoi" href="https://doi.org/10.1007/s00203-024-04189-9" target="_blank">DOI ↗</a></div></div></div>
+    <div class="pcard prep"><div class="pslot" data-slot="6"><div class="pslot-ph"><span>🖼</span><small>Journal Cover</small></div><div class="pslot-ov">📤 Upload</div><input type="file" accept="image/*"></div><div class="pdet"><div class="ptit">Adapalene Functions as a Broad-Acting Transcriptional Repressor of Efflux Pumps to Sensitize MRSA to β-Lactam Antibiotics</div><div class="pau">Ojha S, Beuria TK</div><div class="pmeta"><span class="pbadge prep">In Preparation</span><span class="pbadge first">First Author</span></div></div></div>
+    <div class="pcard prep"><div class="pslot" data-slot="7"><div class="pslot-ph"><span>🖼</span><small>Journal Cover</small></div><div class="pslot-ov">📤 Upload</div><input type="file" accept="image/*"></div><div class="pdet"><div class="ptit">Repurposing Amlodipine as an Efflux Pump Inhibitor to Restore β-Lactam Efficacy in Methicillin-Resistant <em>Staphylococcus aureus</em></div><div class="pau">Ojha S, Beuria TK</div><div class="pmeta"><span class="pbadge prep">In Preparation</span><span class="pbadge first">First Author</span></div></div></div>
+    <div class="pcard prep"><div class="pslot" data-slot="8"><div class="pslot-ph"><span>🖼</span><small>Journal Cover</small></div><div class="pslot-ov">📤 Upload</div><input type="file" accept="image/*"></div><div class="pdet"><div class="ptit">Inhibition of Efflux Pumps in Clinically Relevant Resistant Strains by Marine Cyanobacterial Metabolites Nhatrangin A and Gama-butyrolactone</div><div class="pau">Nousi Parvin, Suvendu Ojha, Tushar Kant Beuria, Jnanendra Rath</div><div class="pmeta"><span class="pbadge prep">In Preparation</span><span class="pbadge collab">Collaborative</span></div></div></div>
+    <div class="pcard prep"><div class="pslot" data-slot="9"><div class="pslot-ph"><span>🖼</span><small>Journal Cover</small></div><div class="pslot-ov">📤 Upload</div><input type="file" accept="image/*"></div><div class="pdet"><div class="ptit">Ion-Induced modulation of Amoeba–Bacteria interactions in wastewater: insights from experimental data and machine learning validation</div><div class="pau">Anas M, Ghosh S, Ojha S, Beuria TK, Das S</div><div class="pmeta"><span class="pj">Agricultural Water Management</span><span class="pbadge prep">Under Review</span><span class="pbadge collab">Collaborative</span></div></div></div>
+  </div>
+</section>
+<div class="sdiv"></div>
+
+<section id="patents">
+  <div class="slbl">Intellectual Property</div>
+  <div class="stit">Patents</div>
+  <div class="plist">
+    <div class="pcard pat"><div class="pslot" data-slot="10"><div class="pslot-ph"><span>📋</span><small>Patent Doc</small></div><div class="pslot-ov">📤 Upload</div><input type="file" accept="image/*"></div><div class="pdet"><div class="ptit">Pharmaceutical compositions comprising sertaconazole or oxiconazole as efflux pump inhibitors for treating multidrug-resistant <em>Staphylococcus aureus</em> infections</div><div class="pau">Suvendu Ojha, Dr. Tushar Kant Beuria</div><div class="pmeta"><span class="pno">IN202531053455</span><span class="py">2025</span><span class="pbadge prep">Pending</span></div></div></div>
+    <div class="pcard pat"><div class="pslot" data-slot="11"><div class="pslot-ph"><span>📋</span><small>Patent Doc</small></div><div class="pslot-ov">📤 Upload</div><input type="file" accept="image/*"></div><div class="pdet"><div class="ptit">A formulation to inhibit the growth of multidrug-resistant <em>S. aureus</em></div><div class="pau">Suvendu Ojha, Dr. Tushar Kant Beuria</div><div class="pmeta"><span class="pno">IN202431062787</span><span class="py">2024</span><span class="pbadge prep">Pending</span></div></div></div>
+  </div>
+</section>
+<div class="sdiv"></div>
+
+<section id="mentorship">
+  <div class="slbl">Training &amp; Guidance</div>
+  <div class="stit">Mentorship &amp; Supervision</div>
+  <div class="cgrid2">
+    <div class="icard gold"><h3>PhD Students Trained</h3><div class="sub">BRIC-Institute of Life Sciences</div><div class="det">3 students guided through experimental design, laboratory techniques, and data interpretation</div></div>
+    <div class="icard gold"><h3>MSc Students Trained</h3><div class="sub">BRIC-Institute of Life Sciences</div><div class="det">2 students supervised through research methodology and laboratory practice</div></div>
+  </div>
+</section>
+<div class="sdiv"></div>
+
+<section id="skills">
+  <div class="slbl">Technical Expertise</div>
+  <div class="stit">Experimental Skills</div>
+  <div class="skills-grid">
+    <div class="skill-card"><div class="skill-icon">💊</div><div class="skill-body"><h3>Drug Discovery &amp; High-Throughput Screening</h3><p>Screening of FDA-approved drugs and LOPAC compound libraries. Identified Montelukast, Sertaconazole, and Oxiconazole as potent EPIs and 10058-F4 as a biofilm inhibitor.</p></div></div>
+    <div class="skill-card"><div class="skill-icon">🧫</div><div class="skill-body"><h3>Antimicrobial Susceptibility &amp; Synergy Testing</h3><p>MIC/MBC (CLSI/EUCAST), E-test, checkerboard synergy, growth curves, resazurin assay, and time-kill kinetics against MDR <em>S. aureus</em>.</p></div></div>
+    <div class="skill-card"><div class="skill-icon">🧬</div><div class="skill-body"><h3>Molecular Biology &amp; Gene Expression</h3><p>Cloning, recombinant protein expression, Western blotting, qRT-PCR profiling of efflux/biofilm regulators, and EMSA for protein–DNA interactions.</p></div></div>
+    <div class="skill-card"><div class="skill-icon">⚗️</div><div class="skill-body"><h3>Protein Biochemistry &amp; Biophysics</h3><p>Protein purification, CD spectroscopy, isothermal titration calorimetry (ITC), and fluorimetry to characterise binding affinities in MgrA and related regulators.</p></div></div>
+    <div class="skill-card"><div class="skill-icon">🔬</div><div class="skill-body"><h3>Biofilm Biology &amp; Microscopy</h3><p>Crystal violet assays, CLSM/STED (WGA-FITC, SYPRO Ruby, DAPI), SEM, and fluorescence microscopy for biofilm architecture analysis.</p></div></div>
+    <div class="skill-card"><div class="skill-icon">📊</div><div class="skill-body"><h3>Flow Cytometry &amp; Viability</h3><p>BD Accuri C6 Plus and Beckman Coulter CytoFLEX for SYTO9/PI viability and DiOC2 membrane potential to differentiate bactericidal vs. bacteriostatic mechanisms.</p></div></div>
+    <div class="skill-card"><div class="skill-icon">🧪</div><div class="skill-body"><h3>Mammalian Cell Culture &amp; Cytotoxicity</h3><p>A549 and HEK293T culture, STR profiling, mycoplasma testing, and MTT assays for CC₅₀ determination and compound safety profiling.</p></div></div>
+    <div class="skill-card"><div class="skill-icon">🐭</div><div class="skill-body"><h3>Animal Models</h3><p>Subcutaneous murine <em>S. aureus</em> skin infection (BALB/c), G*Power sample size analysis, CFU/g tissue quantification, and in vivo PD assessment.</p></div></div>
+    <div class="skill-card"><div class="skill-icon">📈</div><div class="skill-body"><h3>Statistics &amp; Experimental Design</h3><p>GraphPad Prism and Excel for ANOVA, regression, and survival curves. Power analysis for adequately powered in vivo studies with appropriate controls.</p></div></div>
+    <div class="skill-card"><div class="skill-icon">🛡️</div><div class="skill-body"><h3>Biosafety &amp; Regulatory Compliance</h3><p>BSL-2 and BSL-3 containment, COVID-19 diagnostics participation, and handling of highly pathogenic organisms with full regulatory compliance.</p></div></div>
+  </div>
+</section>
+<div class="sdiv"></div>
+
+<section id="awards">
+  <div class="slbl">Recognition</div>
+  <div class="stit">Fellowships &amp; Awards</div>
+  <div class="cgrid2">
+    <div class="icard gold"><h3>Best Poster Award</h3><div class="sub">MECH2MED-2026 · IIT Kharagpur</div><div class="det">2026 · "Montelukast Restores Fluoroquinolone Susceptibility in MDR S. aureus by Modulating the PknB-RsbU-MgrA Regulatory Axis"</div></div>
+    <div class="icard gold"><h3>Best Researcher Award — Bacteriology</h3><div class="sub">bestpaperawards.com</div><div class="det">2025</div></div>
+    <div class="icard blue"><h3>CSIR-NET (JRF) — All India Rank 77</h3><div class="sub">Council of Scientific &amp; Industrial Research</div><div class="det">2019 · National Doctoral Fellowship Examination</div></div>
+    <div class="icard blue"><h3>GATE Life Sciences — All India Rank 745</h3><div class="sub">Graduate Aptitude Test in Engineering</div><div class="det">2018 · National PG/PhD Entrance Examination</div></div>
+  </div>
+</section>
+<div class="sdiv"></div>
+
+<section id="references">
+  <div class="slbl">Academic References</div>
+  <div class="stit">References</div>
+  <div class="cgrid2">
+    <div class="icard blue"><h3>Dr. Tushar Kant Beuria</h3><div class="sub">PhD Supervisor · Scientist-F</div><div class="det">Bacterial Cell Division &amp; Antimicrobial Resistance Lab<br>BRIC-Institute of Life Sciences, Bhubaneswar<br><a href="mailto:tkbeuria@ils.res.in">tkbeuria@ils.res.in</a></div></div>
+    <div class="icard blue"><h3>Dr. Narottam Acharya</h3><div class="sub">Scientific Advisor · Scientist-G</div><div class="det">Genome Instability Laboratory<br>BRIC-Institute of Life Sciences, Bhubaneswar<br><a href="mailto:narottam_acharya@ils.res.in">narottam_acharya@ils.res.in</a></div></div>
+    <div class="icard blue"><h3>Dr. Soma Chattopadhyay</h3><div class="sub">DAC Member · Scientist-F</div><div class="det">Molecular Virology Laboratory<br>BRIC-Institute of Life Sciences, Bhubaneswar<br><a href="mailto:soma@ils.res.in">soma@ils.res.in</a></div></div>
+  </div>
+</section>
+
+<footer>Suvendu Ojha · BRIC-Institute of Life Sciences, Bhubaneswar · © 2025</footer>
+
+<script>
+var PASS = 'ILS@2025';
+var S = { photo: null, imgs: {} };
+
+// ── Storage helpers (window.storage) ──
+async function sget(k) {
+  try { var r = await window.storage.get(k); return r ? r.value : null; } catch(e) { return null; }
+}
+async function sset(k, v) {
+  try { await window.storage.set(k, v); } catch(e) {}
+}
+
+// ── Resize image before storing ──
+function resizeFile(file, maxPx) {
+  return new Promise(function(res) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      var img = new Image();
+      img.onload = function() {
+        var ratio = Math.min(maxPx/img.width, maxPx/img.height, 1);
+        var c = document.createElement('canvas');
+        c.width = Math.round(img.width * ratio);
+        c.height = Math.round(img.height * ratio);
+        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+        res(c.toDataURL('image/jpeg', 0.82));
+      };
+      img.onerror = function() { res(e.target.result); };
+      img.src = e.target.result;
+    };
+    reader.onerror = function() { res(null); };
+    reader.readAsDataURL(file);
+  });
+}
+
+// ── Apply photo to DOM ──
+function applyPhoto(data) {
+  var img = document.getElementById('hphoto');
+  var ini = document.getElementById('hini');
+  img.src = data;
+  img.style.display = 'block';
+  ini.style.display = 'none';
+  S.photo = data;
+}
+
+// ── Apply slot image to DOM ──
+function applySlot(idx, data) {
+  var slot = document.querySelector('[data-slot="' + idx + '"]');
+  if (!slot) return;
+  var ph = slot.querySelector('.pslot-ph');
+  if (ph) ph.style.display = 'none';
+  var im = slot.querySelector('img');
+  if (im) { im.src = data; }
+  else { im = document.createElement('img'); im.src = data; slot.prepend(im); }
+  S.imgs[idx] = data;
+}
+
+// ── Init: restore all saved images ──
+async function init() {
+  var p = await sget('soj-photo');
+  if (p) { applyPhoto(p); }
+  for (var i = 0; i < 12; i++) {
+    var img = await sget('soj-img-' + i);
+    if (img) { applySlot(i, img); }
+  }
+}
+
+// ── Password modal ──
+var modal = document.getElementById('pwModal');
+var pwIn  = document.getElementById('pwInput');
+var pwErr = document.getElementById('pwErr');
+
+document.getElementById('editBtn').addEventListener('click', function() {
+  if (document.body.classList.contains('edit-mode')) { setEdit(false); }
+  else { modal.classList.add('show'); setTimeout(function(){ pwIn.focus(); }, 80); }
+});
+document.getElementById('pwOk').addEventListener('click', checkPw);
+document.getElementById('pwCan').addEventListener('click', closePw);
+pwIn.addEventListener('keydown', function(e) { if (e.key === 'Enter') checkPw(); });
+
+// Secret shortcut: press E three times quickly to open edit modal
+var eCount = 0, eTimer;
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'e' || e.key === 'E') {
+    eCount++;
+    clearTimeout(eTimer);
+    eTimer = setTimeout(function(){ eCount = 0; }, 600);
+    if (eCount >= 3) {
+      eCount = 0;
+      if (!document.body.classList.contains('edit-mode')) {
+        modal.classList.add('show');
+        setTimeout(function(){ pwIn.focus(); }, 80);
+      }
+    }
+  }
+});
+
+function checkPw() {
+  if (pwIn.value === PASS) { closePw(); setEdit(true); }
+  else { pwErr.textContent = 'Incorrect password.'; }
+}
+function closePw() {
+  modal.classList.remove('show'); pwIn.value = ''; pwErr.textContent = '';
+}
+function setEdit(on) {
+  document.body.classList.toggle('edit-mode', on);
+  var eb = document.getElementById('editBtn');
+  var dl = document.getElementById('dlBtn');
+  if (on) {
+    eb.textContent = '✅ Exit Editing';
+    eb.style.cssText = 'opacity:1;border-color:var(--blue);color:var(--blue)';
+    dl.style.display = 'inline-block';
+  } else {
+    eb.textContent = '🔒 Edit';
+    eb.style.cssText = '';
+    dl.style.display = 'none';
+  }
+}
+
+// ── Photo upload ──
+document.getElementById('photoFile').addEventListener('change', async function() {
+  var f = this.files[0]; if (!f) return;
+  var data = await resizeFile(f, 600);
+  if (!data) return;
+  applyPhoto(data);
+  await sset('soj-photo', data);
+});
+
+// ── Slot image uploads ──
+document.querySelectorAll('.pslot input[type=file]').forEach(function(inp) {
+  inp.addEventListener('change', async function() {
+    var f = this.files[0]; if (!f) return;
+    var idx = this.closest('.pslot').dataset.slot;
+    var data = await resizeFile(f, 400);
+    if (!data) return;
+    applySlot(idx, data);
+    await sset('soj-img-' + idx, data);
+  });
+});
+
+// ── Download standalone HTML ──
+document.getElementById('dlBtn').addEventListener('click', function() {
+  // Clone body, inject current images, strip scripts
+  var clone = document.body.cloneNode(true);
+
+  // Inject photo
+  if (S.photo) {
+    var ci = clone.querySelector('#hphoto');
+    var cn = clone.querySelector('#hini');
+    if (ci) { ci.src = S.photo; ci.style.display = 'block'; }
+    if (cn) cn.style.display = 'none';
+  }
+
+  // Inject slot images
+  Object.keys(S.imgs).forEach(function(idx) {
+    var slot = clone.querySelector('[data-slot="' + idx + '"]');
+    if (!slot) return;
+    var ph = slot.querySelector('.pslot-ph');
+    if (ph) ph.style.display = 'none';
+    var im = slot.querySelector('img');
+    if (!im) { im = document.createElement('img'); slot.prepend(im); }
+    im.src = S.imgs[idx];
+  });
+
+  // Reset UI state in clone
+  var m = clone.querySelector('.modal-bg'); if (m) m.classList.remove('show');
+  clone.classList.remove('edit-mode');
+  var dl2 = clone.querySelector('#dlBtn'); if (dl2) dl2.style.display = 'none';
+  clone.querySelectorAll('script').forEach(function(s){ s.remove(); });
+
+  var css = document.getElementById('maincss').textContent;
+  var bodyHTML = clone.innerHTML;
+
+  var standaloneJS = [
+    "var PASS='ILS@2025';var S={photo:null,imgs:{}};",
+    "function lsg(k){try{return localStorage.getItem(k);}catch(e){return null;}}",
+    "function lss(k,v){try{localStorage.setItem(k,v);}catch(e){}}",
+    "function resF(file,mx){return new Promise(function(res){var r=new FileReader();r.onload=function(e){var i=new Image();i.onload=function(){var ratio=Math.min(mx/i.width,mx/i.height,1);var c=document.createElement('canvas');c.width=Math.round(i.width*ratio);c.height=Math.round(i.height*ratio);c.getContext('2d').drawImage(i,0,0,c.width,c.height);res(c.toDataURL('image/jpeg',.82));};i.onerror=function(){res(e.target.result);};i.src=e.target.result;};r.onerror=function(){res(null);};r.readAsDataURL(file);});}",
+    "function apPh(d){var img=document.getElementById('hphoto'),ini=document.getElementById('hini');img.src=d;img.style.display='block';ini.style.display='none';S.photo=d;}",
+    "function apSl(idx,d){var slot=document.querySelector('[data-slot=\"'+idx+'\"]');if(!slot)return;var ph=slot.querySelector('.pslot-ph');if(ph)ph.style.display='none';var im=slot.querySelector('img');if(im){im.src=d;}else{im=document.createElement('img');im.src=d;slot.prepend(im);}S.imgs[idx]=d;}",
+    "function init(){var p=lsg('soj-photo');if(p)apPh(p);for(var i=0;i<12;i++){var img=lsg('soj-img-'+i);if(img)apSl(i,img);}}",
+    "var modal=document.getElementById('pwModal'),pwIn=document.getElementById('pwInput'),pwErr=document.getElementById('pwErr');",
+    "document.getElementById('editBtn').addEventListener('click',function(){if(document.body.classList.contains('edit-mode')){setEdit(false);}else{modal.classList.add('show');setTimeout(function(){pwIn.focus();},80);}});",
+    "document.getElementById('pwOk').addEventListener('click',checkPw);",
+    "document.getElementById('pwCan').addEventListener('click',function(){modal.classList.remove('show');pwIn.value='';pwErr.textContent='';});",
+    "pwIn.addEventListener('keydown',function(e){if(e.key==='Enter')checkPw();});",
+    "function checkPw(){if(pwIn.value===PASS){modal.classList.remove('show');pwIn.value='';pwErr.textContent='';setEdit(true);}else{pwErr.textContent='Incorrect password.';}}",
+    "function setEdit(on){document.body.classList.toggle('edit-mode',on);var eb=document.getElementById('editBtn');if(on){eb.textContent='\\u2705 Exit Editing';eb.style.cssText='opacity:1;border-color:var(--blue);color:var(--blue)';}else{eb.textContent='\\uD83D\\uDD12 Edit';eb.style.cssText='';}}",
+    "document.getElementById('photoFile').addEventListener('change',async function(){var f=this.files[0];if(!f)return;var d=await resF(f,600);if(!d)return;apPh(d);lss('soj-photo',d);});",
+    "document.querySelectorAll('.pslot input[type=file]').forEach(function(inp){inp.addEventListener('change',async function(){var f=this.files[0];if(!f)return;var idx=this.closest('.pslot').dataset.slot;var d=await resF(f,400);if(!d)return;apSl(idx,d);lss('soj-img-'+idx,d);});});",
+    "init();"
+  ].join('\n');
+
+  var html = '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width,initial-scale=1.0">\n<title>Suvendu Ojha | Research Profile</title>\n<style>' + css + '</style>\n</head>\n<body>\n' + bodyHTML + '\n<script>\n' + standaloneJS + '\n<\/script>\n</body>\n</html>';
+
+  var blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'suvendu-ojha-research-profile.html';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(a.href);
+});
+
+init();
+</script>
+</body>
+</html>
