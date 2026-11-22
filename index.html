@@ -548,6 +548,139 @@ html.js .cov{cursor:zoom-in;}
   html.js .reveal,html.fx .tli{opacity:1!important;transform:none!important;animation:none!important;}
   .pcard.gone{display:flex!important;}
 }
+
+
+/* ================= IMMERSIVE 3D RESEARCH LAYER =================
+   CSS-only scientific objects: no external 3D dependency or network calls. */
+:root{
+  --depth-shadow: 0 22px 48px -28px rgba(24,28,55,.42), 0 7px 18px -12px rgba(24,28,55,.18);
+  --depth-highlight: inset 0 1px 0 rgba(255,255,255,.72);
+}
+.hero-panel,.panel,.stat,.vcard,.pcard,.sk,.ic,.svc-card,.ref,.glance{
+  border-radius:16px!important;
+  box-shadow:var(--depth-shadow),var(--depth-highlight);
+}
+.hero-panel{isolation:isolate;border:1px solid color-mix(in srgb,var(--p-line) 72%,white)!important;
+  background-image:linear-gradient(135deg,color-mix(in srgb,var(--p-bg) 94%,white),var(--p-bg) 58%,color-mix(in srgb,var(--p-bg) 88%,var(--p-acc)))!important;}
+.panel,.vcard,.stat,.sk,.ic,.svc-card,.ref,.glance{backdrop-filter:saturate(1.08);-webkit-backdrop-filter:saturate(1.08);}
+.vcard,.stat,.sk,.ic,.svc-card,.ref,.pcard{transform-style:preserve-3d;}
+.vcard,.sk,.ic,.svc-card,.stat{transition:box-shadow .35s var(--ease),border-color .3s,background .3s;}
+.vcard::before,.sk::before,.ic::before,.svc-card::before,.stat::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.72;
+  background:linear-gradient(145deg,rgba(255,255,255,.25),transparent 42%,rgba(20,24,60,.035));
+}
+@media (hover:hover) and (pointer:fine){
+  html.js .vcard:hover,html.js .sk:hover,html.js .ic:hover,html.js .svc-card:hover,html.js .stat:hover{
+    box-shadow:0 30px 58px -30px color-mix(in srgb,var(--p-acc) 45%,transparent),0 12px 24px -18px rgba(20,24,60,.28),var(--depth-highlight);
+  }
+  html.js .pcard:hover{box-shadow:0 30px 56px -30px color-mix(in srgb,var(--p-acc) 48%,transparent),0 12px 25px -18px rgba(20,24,60,.28);}
+}
+.chip,.pl,.btn,.fxbtn,.scene-btn,.pf,.tbtn,.navtog{border-radius:9px!important;}
+.pico,.pnum,.vnum,.num,.mark,.port{border-radius:12px!important;}
+.pcard{overflow:hidden;border-radius:16px!important;box-shadow:0 9px 24px -20px rgba(20,24,60,.42);}
+.cov{border-radius:12px 12px 0 0!important;}
+
+/* Draggable 3D objects in the three research themes */
+.scene-controls{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:20px;padding-top:16px;border-top:1px solid var(--p-line);}
+.scene-controls__intro{display:flex;align-items:center;gap:10px;color:var(--ink-2);font-size:.76rem;}
+.scene-controls__intro b{display:block;color:var(--ink);font-size:.78rem;letter-spacing:.02em;}
+.scene-controls__intro small{display:block;color:var(--ink-3);font-size:.67rem;margin-top:2px;}
+.scene-live{width:9px;height:9px;border-radius:50%!important;background:#39a77a;box-shadow:0 0 0 5px rgba(57,167,122,.12),0 0 16px rgba(57,167,122,.42);flex:0 0 auto;animation:livePulse 2.1s ease-in-out infinite;}
+.scene-controls__actions{display:flex;gap:8px;flex-wrap:wrap;}
+.scene-btn{border:1px solid var(--line);background:var(--surface);color:var(--ink-2);font:inherit;font-size:.66rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:10px 13px;cursor:pointer;transition:transform .25s var(--ease),border-color .25s,color .25s,background .25s;}
+.scene-btn:hover{transform:translateY(-2px);border-color:var(--a-violet);color:var(--a-violet);}
+.scene-btn[aria-pressed="true"]{background:var(--t-violet-bg);border-color:var(--t-violet-line);color:var(--a-violet);}
+@keyframes livePulse{0%,100%{box-shadow:0 0 0 4px rgba(57,167,122,.1),0 0 12px rgba(57,167,122,.25)}50%{box-shadow:0 0 0 8px rgba(57,167,122,.04),0 0 22px rgba(57,167,122,.5)}}
+.research-object{position:absolute;z-index:0;right:12px;top:11px;width:124px;height:124px;perspective:850px;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none;}
+.research-object:active{cursor:grabbing;}
+.research-object:focus-visible{outline:2px solid var(--p-acc);outline-offset:4px;border-radius:14px!important;}
+.research-object__depth{position:absolute;inset:2px;transform-style:preserve-3d;transform:perspective(850px) rotateX(var(--obj-rx,-12deg)) rotateY(var(--obj-ry,0deg));transition:transform .16s ease-out;}
+.research-object__spin{position:absolute;inset:0;transform-style:preserve-3d;animation:objectOrbit 18s linear infinite;}
+.object-caption{position:absolute;right:0;bottom:-1px;color:var(--p-acc);font-size:.48rem;font-weight:900;letter-spacing:.16em;opacity:.7;white-space:nowrap;pointer-events:none;}
+@keyframes objectOrbit{from{transform:rotateY(0deg) rotateX(8deg)}to{transform:rotateY(360deg) rotateX(8deg)}}
+@keyframes objectFloat{0%,100%{translate:0 0}50%{translate:0 -6px}}
+.research-object{animation:objectFloat 5.6s ease-in-out infinite;}
+
+/* 01 — volumetric cocci cluster */
+.ro-cell{transform-style:preserve-3d;}
+.cocci-sphere{position:absolute;left:50%;top:50%;display:block;width:43px;height:43px;border-radius:50%!important;
+  background:radial-gradient(circle at 28% 22%,#fff 0 4%,#dcd7ff 10%,#a99bf2 27%,#6f5bd0 57%,#382683 83%,#211450 100%);
+  border:1px solid rgba(70,53,150,.36);box-shadow:inset -7px -8px 13px rgba(20,10,64,.4),inset 4px 5px 9px rgba(255,255,255,.45),0 12px 19px -12px rgba(36,20,105,.7);
+  transform-style:preserve-3d;}
+.sphere-a{transform:translate3d(-50%,-50%,28px) scale(1.04)}
+.sphere-b{transform:translate3d(-4px,-27px,-8px) scale(.84)}
+.sphere-c{transform:translate3d(-43px,-5px,-20px) scale(.78)}
+.sphere-d{transform:translate3d(10px,3px,32px) scale(.8)}
+.sphere-e{transform:translate3d(-24px,14px,7px) scale(.72)}
+.sphere-f{transform:translate3d(13px,-44px,-28px) scale(.68)}
+.ro-cell-ring{position:absolute;left:50%;top:50%;width:112px;height:42px;border:1px solid color-mix(in srgb,var(--a-violet) 55%,transparent);border-radius:50%!important;transform:translate(-50%,-50%) rotateX(68deg) rotateZ(-22deg) translateZ(-12px);box-shadow:0 0 12px color-mix(in srgb,var(--a-violet) 18%,transparent);}
+
+/* 02 — twisted signalling helix */
+.ro-dna{inset:0;}
+.ro-step{position:absolute;left:50%;top:var(--step-top,5px);width:74px;height:8px;transform:translateX(-50%) rotateY(var(--angle,0deg)) translateZ(15px);transform-style:preserve-3d;}
+.ro-step::before,.ro-step::after{content:"";position:absolute;top:50%;width:11px;height:11px;border-radius:50%!important;transform:translateY(-50%);box-shadow:inset -2px -2px 4px rgba(0,0,0,.22),0 3px 7px rgba(18,50,65,.18);}
+.ro-step::before{left:-2px;background:radial-gradient(circle at 30% 25%,#fff,#7bcee0 36%,#137c94 100%);}
+.ro-step::after{right:-2px;background:radial-gradient(circle at 30% 25%,#fff,#a9e6d1 36%,#238c70 100%);}
+.ro-step{background:linear-gradient(90deg,rgba(19,124,148,.86),rgba(255,255,255,.68) 48%,rgba(35,140,112,.9));height:3px;box-shadow:0 0 8px rgba(35,140,112,.2);}
+
+/* 03 — ball-and-stick ligand / target complex */
+.ro-ligand{transform-style:preserve-3d;}
+.ro-atom{position:absolute;left:50%;top:50%;width:18px;height:18px;border-radius:50%!important;box-shadow:inset -4px -4px 7px rgba(0,0,0,.27),inset 3px 3px 5px rgba(255,255,255,.75),0 7px 13px -7px rgba(15,35,45,.55);}
+.atom-a{background:radial-gradient(circle at 30% 24%,#fff,#f7c96d 36%,#aa6413 100%);transform:translate3d(-6px,-36px,25px) scale(1.16)}
+.atom-b{background:radial-gradient(circle at 30% 24%,#fff,#79d5d0 36%,#147b86 100%);transform:translate3d(-48px,-10px,-4px)}
+.atom-c{background:radial-gradient(circle at 30% 24%,#fff,#a7a0ef 36%,#4b3eb5 100%);transform:translate3d(31px,-15px,10px) scale(1.12)}
+.atom-d{background:radial-gradient(circle at 30% 24%,#fff,#f29c9c 36%,#ad444e 100%);transform:translate3d(-24px,29px,-17px) scale(.9)}
+.atom-e{background:radial-gradient(circle at 30% 24%,#fff,#9be0af 36%,#268b55 100%);transform:translate3d(24px,27px,29px) scale(.92)}
+.atom-f{background:radial-gradient(circle at 30% 24%,#fff,#d9d7e8 36%,#70758e 100%);transform:translate3d(2px,-1px,-35px) scale(.8)}
+.ro-bond{position:absolute;left:50%;top:50%;width:44px;height:5px;border-radius:99px!important;background:linear-gradient(90deg,rgba(255,255,255,.92),rgba(112,116,148,.8),rgba(255,255,255,.78));box-shadow:0 2px 5px rgba(20,30,55,.25);transform-origin:left center;}
+.bond-a{transform:translate3d(-33px,-26px,20px) rotate(-24deg) rotateY(22deg)}
+.bond-b{transform:translate3d(2px,-23px,17px) rotate(16deg) rotateY(-32deg)}
+.bond-c{transform:translate3d(-34px,14px,-5px) rotate(48deg) rotateY(20deg)}
+.bond-d{transform:translate3d(-4px,18px,12px) rotate(-22deg) rotateY(48deg)}
+.bond-e{width:34px;transform:translate3d(-13px,-2px,-23px) rotate(82deg) rotateY(65deg)}
+.ro-target{position:absolute;left:50%;top:50%;width:106px;height:58px;border:1px solid rgba(156,110,18,.45);border-radius:50%!important;transform:translate(-50%,-50%) rotateX(70deg) rotateY(-22deg) translateZ(-12px);box-shadow:0 0 16px rgba(156,110,18,.12);}
+
+/* Keep text clear of the 3D illustrations without shrinking the body copy. */
+.vcard > .research-object{position:absolute!important;z-index:1!important;}
+.vcard h3{max-width:none;width:100%;padding-right:112px;position:relative;z-index:1;}
+.vcard ul{position:relative;z-index:1;}
+.vcard .vnum{position:relative;z-index:1;}
+html.scene-fast .research-object__spin{animation-duration:6s!important;}
+html.scene-fast .research-object{animation-duration:2.8s!important;}
+html.js .research-object.dragging .research-object__depth{transition:none;}
+.fxbar{max-width:min(54%,660px);}
+.fxbtn[aria-pressed="true"]{background:var(--t-violet-bg);border-color:var(--t-violet-line);color:var(--a-violet);}
+
+@media (max-width:760px){
+  .research-object{width:92px;height:92px;right:9px;top:9px;opacity:.78;}
+  .cocci-sphere{width:34px;height:34px;}
+  .ro-cell-ring{width:86px;height:32px;}
+  .ro-step{width:58px;top:var(--small-top,4px);}
+  .ro-step::before,.ro-step::after{width:9px;height:9px;}
+  .object-caption{font-size:.42rem;}
+  .scene-controls{align-items:flex-start;}
+  .scene-controls__actions{width:100%;}
+  .scene-btn{flex:1;}
+  .vcard h3{max-width:none;padding-right:82px;}
+  .fxbar{max-width:100%;}
+}
+@media (max-width:480px){
+  .hero-panel,.panel,.stat,.vcard,.pcard,.sk,.ic,.svc-card,.ref,.glance{border-radius:12px!important;}
+  .research-object{width:76px;height:76px;opacity:.7;}
+  .vcard h3{max-width:none;padding-right:66px;}
+  .object-caption{display:none;}
+  .fxbar{gap:7px;}
+  .fxhint{flex-basis:100%;}
+  .fxbtn{padding:8px 10px;font-size:.6rem;}
+}
+@media (prefers-reduced-motion:reduce){
+  .research-object,.research-object__spin,.scene-live{animation:none!important;}
+  .research-object__depth{transition:none!important;}
+}
+@media print{
+  .scene-controls,.research-object{display:none!important;}
+}
+
 </style>
 <script>document.documentElement.className+=" js";</script>
 </head>
@@ -783,9 +916,24 @@ html.js .cov{cursor:zoom-in;}
       </div>
       <div class="prule"></div>
       <p class="sintro">Three connected themes. The questions I find most interesting sit where they overlap.</p>
+      <div class="scene-controls" aria-label="3D illustration controls">
+        <div class="scene-controls__intro"><span class="scene-live" aria-hidden="true"></span><span><b>Interactive 3D models</b><small>Drag an object to rotate it · use arrow keys when focused</small></span></div>
+        <div class="scene-controls__actions">
+          <button class="scene-btn" id="sceneResetBtn" type="button">Reset views</button>
+        </div>
+      </div>
     </div>
     <div class="vgrid">
       <article class="vcard k-violet reveal vis tilt">
+        <div class="research-object" data-model="cell" role="group" tabindex="0" aria-label="Draggable 3D model: bacterial cell cluster">
+          <div class="research-object__depth"><div class="research-object__spin ro-cell">
+            <span class="cocci-sphere sphere-a"></span><span class="cocci-sphere sphere-b"></span>
+            <span class="cocci-sphere sphere-c"></span><span class="cocci-sphere sphere-d"></span>
+            <span class="cocci-sphere sphere-e"></span><span class="cocci-sphere sphere-f"></span>
+            <span class="ro-cell-ring"></span>
+          </div></div>
+          <span class="object-caption">CELL CLUSTER</span>
+        </div>
         <svg class="wm" viewBox="0 0 120 120" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="4"><circle cx="46" cy="50" r="22"></circle><circle cx="76" cy="74" r="17"></circle><circle cx="38" cy="84" r="14"></circle></g></svg>
         <span class="vnum">01</span>
         <h3>Resistance, tolerance and chronic infection</h3>
@@ -797,6 +945,10 @@ html.js .cov{cursor:zoom-in;}
         </ul>
       </article>
       <article class="vcard k-teal reveal vis tilt">
+        <div class="research-object" data-model="dna" role="group" tabindex="0" aria-label="Draggable 3D model: twisted DNA-like signalling helix">
+          <div class="research-object__depth"><div class="research-object__spin ro-dna"><span class="ro-step" style="--angle:0deg;--small-top:4px;top:5.0px"></span><span class="ro-step" style="--angle:38deg;--small-top:13px;top:17.7px"></span><span class="ro-step" style="--angle:76deg;--small-top:22px;top:30.4px"></span><span class="ro-step" style="--angle:114deg;--small-top:31px;top:43.099999999999994px"></span><span class="ro-step" style="--angle:152deg;--small-top:40px;top:55.8px"></span><span class="ro-step" style="--angle:190deg;--small-top:49px;top:68.5px"></span><span class="ro-step" style="--angle:228deg;--small-top:58px;top:81.19999999999999px"></span><span class="ro-step" style="--angle:266deg;--small-top:67px;top:93.89999999999999px"></span><span class="ro-step" style="--angle:304deg;--small-top:76px;top:106.6px"></span></div></div>
+          <span class="object-caption">SIGNALLING</span>
+        </div>
         <svg class="wm" viewBox="0 0 120 120" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="4"><path d="M30 34c30 18 30 54 0 72M90 34c-30 18-30 54 0 72"></path><path d="M34 52h52M34 88h52"></path></g></svg>
         <span class="vnum">02</span>
         <h3>Signalling, metabolism and microbial communities</h3>
@@ -808,6 +960,15 @@ html.js .cov{cursor:zoom-in;}
         </ul>
       </article>
       <article class="vcard k-amber reveal vis tilt">
+        <div class="research-object" data-model="ligand" role="group" tabindex="0" aria-label="Draggable 3D model: molecular ligand and target complex">
+          <div class="research-object__depth"><div class="research-object__spin ro-ligand">
+            <i class="ro-bond bond-a"></i><i class="ro-bond bond-b"></i><i class="ro-bond bond-c"></i><i class="ro-bond bond-d"></i><i class="ro-bond bond-e"></i>
+            <span class="ro-atom atom-a"></span><span class="ro-atom atom-b"></span><span class="ro-atom atom-c"></span>
+            <span class="ro-atom atom-d"></span><span class="ro-atom atom-e"></span><span class="ro-atom atom-f"></span>
+            <span class="ro-target"></span>
+          </div></div>
+          <span class="object-caption">LIGAND · TARGET</span>
+        </div>
         <svg class="wm" viewBox="0 0 120 120" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="4"><path d="M48 24v26L28 92a8 8 0 0 0 7 12h50a8 8 0 0 0 7-12L72 50V24z"></path><path d="M44 24h32M38 74h44"></path></g></svg>
         <span class="vnum">03</span>
         <h3>Antimicrobial discovery and therapeutic strategy</h3>
@@ -906,7 +1067,7 @@ html.js .cov{cursor:zoom-in;}
         <div class="ptwrap"><a class="ptitle" href="https://doi.org/10.1016/j.ebiom.2025.105658" target="_blank" rel="noreferrer">Efflux pump modulation by montelukast and its roles in restoring antibiotic susceptibility in multidrug-resistant <span class="species">Staphylococcus aureus</span></a></div>
         <div class="pcbody">
           <p class="pauth"><b>Ojha S</b>, Sinsinwar S, Chatterjee P, Biswal S, Pradhan P, Beuria TK</p>
-          <p class="pwhy">An approved leukotriene antagonist repurposed as an efflux modulator that restores antibiotic susceptibility in MDR <span class="species">S. aureus</span>.</p>
+          <p class="pwhy">We identified montelukast through an efflux-focused screen and traced its activity to the MgrA regulatory pathway. By promoting MgrA phosphorylation and repressing <i>norB</i>, montelukast reduced NorB-mediated efflux and improved moxifloxacin activity, including in a murine skin-infection model.</p>
           <div class="grow"></div>
           <div class="pmeta"><span class="pj">EBioMedicine · 2025 · 114:105658</span><span class="bdg b-first">First author</span>
             <a class="bdg b-doi" href="https://doi.org/10.1016/j.ebiom.2025.105658" target="_blank" rel="noreferrer">DOI ↗</a></div>
@@ -918,7 +1079,7 @@ html.js .cov{cursor:zoom-in;}
         <div class="ptwrap"><a class="ptitle" href="https://doi.org/10.1128/aac.00320-25" target="_blank" rel="noreferrer">Inhibition of efflux pumps by FDA-approved drugs oxiconazole and sertaconazole restores antibiotic susceptibility in multidrug-resistant <span class="species">S. aureus</span></a></div>
         <div class="pcbody">
           <p class="pauth"><b>Ojha S</b>, Chatterjee P, Beuria TK</p>
-          <p class="pwhy">Two approved azole antifungals repurposed as efflux pump inhibitors, resensitising MDR staphylococci to antibiotics already in clinical use.</p>
+          <p class="pwhy">This study examines two clinically used azole antifungals as efflux pump inhibitors in <i>S. aureus</i>. Oxiconazole and sertaconazole reduced efflux activity and potentiated selected antibiotics without measurably compromising membrane integrity or bacterial growth, supporting their evaluation as antibiotic adjuvants.</p>
           <div class="grow"></div>
           <div class="pmeta"><span class="pj">Antimicrob. Agents Chemother. · 2025</span><span class="bdg b-first">First author</span>
             <a class="bdg b-doi" href="https://doi.org/10.1128/aac.00320-25" target="_blank" rel="noreferrer">DOI ↗</a></div>
@@ -930,7 +1091,7 @@ html.js .cov{cursor:zoom-in;}
         <div class="ptwrap"><a class="ptitle" href="https://doi.org/10.1016/j.bioflm.2025.100307" target="_blank" rel="noreferrer">10058-F4-mediated inhibition of biofilm formation in multidrug-resistant <span class="species">Staphylococcus aureus</span></a></div>
         <div class="pcbody">
           <p class="pauth">Dodia H, <b>Ojha S</b>, Chatterjee P, Beuria TK</p>
-          <p class="pwhy">A small molecule that disrupts biofilm formation in MDR <span class="species">S. aureus</span>, mapped onto matrix composition and biofilm architecture.</p>
+          <p class="pwhy">From a compound-library screen, 10058-F4 emerged as an inhibitor of biofilm formation in multidrug-resistant <i>S. aureus</i>. It altered the expression of biofilm-associated regulators and matrix genes, without substantially inhibiting planktonic growth; it did not disperse established biofilms. It also enhanced the activity of selected antibiotics.</p>
           <div class="grow"></div>
           <div class="pmeta"><span class="pj">Biofilm · 2025 · 10:100307</span><span class="bdg b-first">Co-first author</span>
             <a class="bdg b-doi" href="https://doi.org/10.1016/j.bioflm.2025.100307" target="_blank" rel="noreferrer">DOI ↗</a></div>
@@ -942,7 +1103,7 @@ html.js .cov{cursor:zoom-in;}
         <div class="ptwrap"><a class="ptitle" href="https://doi.org/10.1007/s12088-026-01545-9" target="_blank" rel="noreferrer">Efflux-mediated resistance in <span class="species">Staphylococcus aureus</span>: challenges and opportunities for therapeutic intervention</a></div>
         <div class="pcbody">
           <p class="pauth"><b>Ojha S</b>, Beuria TK</p>
-          <p class="pwhy">A critical review of the staphylococcal efflux landscape, assessing where inhibitor development is realistically likely to translate.</p>
+          <p class="pwhy">This review brings together what is known about the major efflux-pump families in <i>S. aureus</i>, their substrates and regulatory networks. It also considers current approaches to efflux inhibition and the practical challenges that must be addressed before these strategies can contribute to treatment of resistant infections.</p>
           <div class="grow"></div>
           <div class="pmeta"><span class="pj">Indian J. Microbiology · 2026</span><span class="bdg b-rev">Review</span>
             <a class="bdg b-doi" href="https://doi.org/10.1007/s12088-026-01545-9" target="_blank" rel="noreferrer">DOI ↗</a></div>
@@ -954,7 +1115,7 @@ html.js .cov{cursor:zoom-in;}
         <div class="ptwrap"><a class="ptitle" href="https://doi.org/10.1080/09593330.2026.2709903" target="_blank" rel="noreferrer">Free-living amoebae predation in nutrient-enriched treated wastewater: ecological potential and machine learning-assisted analysis</a></div>
         <div class="pcbody">
           <p class="pauth">Anas M, Ghosh S, <b>Ojha S</b>, Beuria TK, Das S</p>
-          <p class="pwhy">Protist–bacteria predation as an ecological control on microbial populations in treated wastewater.</p>
+          <p class="pwhy">This collaborative study asks how nutrient ions in treated wastewater influence bacterial grazing by free-living amoebae. Phosphate and ammonium enhanced <i>Vermamoeba vermiformis</i> predation on <i>E. coli</i>, while a mixed amoebal consortium accelerated the removal of <i>Enterococcus mundtii</i>. We also used a YOLOv5 model to quantify amoebal behaviour in microscopy videos.</p>
           <div class="grow"></div>
           <div class="pmeta"><span class="pj">Environmental Technology · 2026</span><span class="bdg b-col">Collaborative</span>
             <a class="bdg b-doi" href="https://doi.org/10.1080/09593330.2026.2709903" target="_blank" rel="noreferrer">DOI ↗</a></div>
@@ -966,7 +1127,7 @@ html.js .cov{cursor:zoom-in;}
         <div class="ptwrap"><a class="ptitle" href="https://doi.org/10.1002/cbf.70030" target="_blank" rel="noreferrer">Thymol as biofilm and efflux pump inhibitor: a dual-action approach to combat <span class="species">Mycobacterium tuberculosis</span></a></div>
         <div class="pcbody">
           <p class="pauth">Shankar Das B, Sarangi A, Pahuja I, Singh V, <b>Ojha S</b>, Giri S, Bhaskar A, Bhattacharya D</p>
-          <p class="pwhy">Extends dual biofilm–efflux inhibition into mycobacteria, against a very different cell envelope.</p>
+          <p class="pwhy">Using <i>Mycobacterium smegmatis</i> as a model, this study evaluates thymol for its effects on bacterial motility, biofilm formation and efflux. The work combines in-vitro assays with computational analysis and examines its interactions with isoniazid and rifampicin, as well as possible contributions from reactive oxygen species.</p>
           <div class="grow"></div>
           <div class="pmeta"><span class="pj">Cell Biochem. Funct. · 2024 · 42(8):e70030</span><span class="bdg b-col">Collaborative</span>
             <a class="bdg b-doi" href="https://doi.org/10.1002/cbf.70030" target="_blank" rel="noreferrer">DOI ↗</a></div>
@@ -978,7 +1139,7 @@ html.js .cov{cursor:zoom-in;}
         <div class="ptwrap"><a class="ptitle" href="https://doi.org/10.1007/s00203-024-04189-9" target="_blank" rel="noreferrer">Ajoene: a natural compound with enhanced antimycobacterial and antibiofilm properties mediated by efflux pump modulation and ROS generation against <span class="species">M. smegmatis</span></a></div>
         <div class="pcbody">
           <p class="pauth">Sarangi A, Das BS, Pahuja I, <b>Ojha S</b>, Singh V, Giri S, Bhaskar A, Bhattacharya D</p>
-          <p class="pwhy">Links antimycobacterial and antibiofilm activity to efflux modulation alongside ROS generation.</p>
+          <p class="pwhy">This study investigates ajoene, a garlic-derived compound, as an antimycobacterial and antibiofilm agent using <i>M. smegmatis</i>. Alongside its effects on growth, motility and biofilm formation, the work examines antibiotic interactions and evidence for efflux modulation and reactive oxygen species generation.</p>
           <div class="grow"></div>
           <div class="pmeta"><span class="pj">Arch. Microbiol. · 2024 · 206(12):453</span><span class="bdg b-col">Collaborative</span>
             <a class="bdg b-doi" href="https://doi.org/10.1007/s00203-024-04189-9" target="_blank" rel="noreferrer">DOI ↗</a></div>
@@ -990,7 +1151,7 @@ html.js .cov{cursor:zoom-in;}
         <div class="ptwrap"><span class="ptitle">Adapalene functions as a broad-acting transcriptional repressor of efflux pumps to sensitise MRSA to β-lactam antibiotics</span></div>
         <div class="pcbody">
           <p class="pauth"><b>Ojha S</b>, Beuria TK</p>
-          <p class="pwhy">Moves the intervention point from the pump itself to the transcription that builds it.</p>
+          <p class="pwhy">This manuscript examines whether adapalene can reduce efflux-associated resistance in MRSA by modulating the transcriptional regulation of efflux systems. The central question is whether targeting this regulatory layer can improve the activity of β-lactam antibiotics.</p>
           <div class="grow"></div>
           <div class="pmeta"><span class="bdg b-prep">In preparation</span><span class="bdg b-first">First author</span></div>
         </div>
@@ -1001,7 +1162,7 @@ html.js .cov{cursor:zoom-in;}
         <div class="ptwrap"><span class="ptitle">Repurposing amlodipine as an efflux pump inhibitor to restore β-lactam efficacy in methicillin-resistant <span class="species">Staphylococcus aureus</span></span></div>
         <div class="pcbody">
           <p class="pauth"><b>Ojha S</b>, Beuria TK</p>
-          <p class="pwhy">A widely prescribed cardiovascular drug tested as a resistance-breaking adjuvant in MRSA.</p>
+          <p class="pwhy">This work evaluates amlodipine as a potential efflux-modulating adjuvant against MRSA. It examines whether the drug can alter efflux-associated phenotypes and improve β-lactam activity, with the broader aim of identifying a clinically familiar compound that could be repositioned to address resistance.</p>
           <div class="grow"></div>
           <div class="pmeta"><span class="bdg b-prep">In preparation</span><span class="bdg b-first">First author</span></div>
         </div>
@@ -1012,7 +1173,7 @@ html.js .cov{cursor:zoom-in;}
         <div class="ptwrap"><span class="ptitle">Inhibition of efflux pumps in clinically relevant resistant strains by marine cyanobacterial metabolites nhatrangin A and γ-butyrolactone: an integrated in vitro and in silico approach</span></div>
         <div class="pcbody">
           <p class="pauth">Parvin N, <b>Ojha S</b>, Beuria TK, Rath J</p>
-          <p class="pwhy">Natural-product chemistry as a source of efflux inhibitors, screened in clinically relevant resistant isolates alongside docking analysis.</p>
+          <p class="pwhy">This manuscript evaluates the marine cyanobacterial metabolites nhatrangin A and γ-butyrolactone as potential efflux inhibitors in clinically relevant resistant bacterial strains. The planned integrated approach combines in-vitro assessment with in-silico analysis to examine their activity and possible interactions with efflux-related targets.</p>
           <div class="grow"></div>
           <div class="pmeta"><span class="bdg b-prep">In preparation</span><span class="bdg b-col">Collaborative</span></div>
         </div>
@@ -1204,6 +1365,7 @@ html.js .cov{cursor:zoom-in;}
         <ul class="mini">
           <li><b>BMC Microbiology</b> — Springer Nature<span class="when">Peer reviewer · 1 manuscript, 2026</span></li>
           <li><b>Naunyn-Schmiedeberg's Archives of Pharmacology</b> — Springer Nature<span class="when">Peer reviewer · 1 manuscript, 2026</span></li>
+          <li><b>Current Microbiology</b> — Springer Nature<span class="when">Peer reviewer · 1 manuscript, 2026</span></li>
         </ul>
       </article>
 
@@ -1265,7 +1427,6 @@ html.js .cov{cursor:zoom-in;}
         </div>
         <div class="grow"></div>
         <a class="btn" style="margin-top:20px" href="mailto:osuvendu@gmail.com">Send an email</a>
-        <p style="font-size:.79rem;margin-top:14px;color:var(--ink-2)">CV and publication list available on request.</p>
       </article>
 
       <article class="panel k-rose reveal vis">
@@ -1475,12 +1636,63 @@ html.js .cov{cursor:zoom-in;}
     };
     document.addEventListener('pointermove', function(e){
       px = e.clientX; py = e.clientY;
-      var t = e.target && e.target.closest ? e.target.closest('.tilt,.panel') : null;
+      var overModel = e.target && e.target.closest ? e.target.closest('.research-object') : null;
+      var t = overModel ? null : (e.target && e.target.closest ? e.target.closest('.tilt,.panel') : null);
       if (t !== cur){ if (cur) rest(cur); cur = t; }
       if (cur && !pRaf) pRaf = requestAnimationFrame(applyTilt);
     }, {passive:true});
     root.addEventListener('mouseleave', function(){ if (cur){ rest(cur); cur = null; } });
   }
+
+  /* ---------- interactive CSS 3D research models ---------- */
+  var modelNodes = [].slice.call(document.querySelectorAll('.research-object'));
+  var sceneResetBtn = $('sceneResetBtn');
+  function resetResearchModels(){
+    modelNodes.forEach(function(node){
+      node.style.setProperty('--obj-rx','-12deg');
+      node.style.setProperty('--obj-ry','0deg');
+      node.classList.remove('dragging');
+    });
+  }
+  modelNodes.forEach(function(node){
+    var dragModel = null, rx = -12, ry = 0;
+    function writeRotation(){
+      node.style.setProperty('--obj-rx', rx.toFixed(1) + 'deg');
+      node.style.setProperty('--obj-ry', ry.toFixed(1) + 'deg');
+    }
+    node.addEventListener('pointerdown', function(e){
+      if (e.button !== undefined && e.button !== 0) return;
+      dragModel = {x:e.clientX,y:e.clientY};
+      node.classList.add('dragging');
+      try { node.setPointerCapture(e.pointerId); } catch(err){}
+      e.preventDefault(); e.stopPropagation();
+    });
+    node.addEventListener('pointermove', function(e){
+      if (!dragModel) return;
+      var dx = e.clientX - dragModel.x, dy = e.clientY - dragModel.y;
+      dragModel.x = e.clientX; dragModel.y = e.clientY;
+      ry += dx * .72; rx = Math.max(-70, Math.min(70, rx - dy * .58));
+      writeRotation();
+    });
+    function endModelDrag(e){
+      if (!dragModel) return;
+      dragModel = null; node.classList.remove('dragging');
+      try { if (e && node.hasPointerCapture(e.pointerId)) node.releasePointerCapture(e.pointerId); } catch(err){}
+    }
+    node.addEventListener('pointerup', endModelDrag);
+    node.addEventListener('pointercancel', endModelDrag);
+    node.addEventListener('keydown', function(e){
+      var changed = true;
+      if (e.key === 'ArrowLeft') ry -= 12;
+      else if (e.key === 'ArrowRight') ry += 12;
+      else if (e.key === 'ArrowUp') rx = Math.max(-70, rx - 10);
+      else if (e.key === 'ArrowDown') rx = Math.min(70, rx + 10);
+      else if (e.key === 'Home'){ rx = -12; ry = 0; }
+      else changed = false;
+      if (changed){ e.preventDefault(); writeRotation(); }
+    });
+  });
+  if (sceneResetBtn) sceneResetBtn.addEventListener('click', resetResearchModels);
 
   /* ---------- hero: interactive 3D schematic (canvas, no libraries) ----------
      A staphylococcal cluster you can rotate. Amber hexagons are antibiotic molecules:
@@ -1919,7 +2131,7 @@ html.js .cov{cursor:zoom-in;}
 
   $('upDl').addEventListener('click', function(){
     var c = document.body.cloneNode(true);
-    c.classList.remove('edit-mode');
+    c.classList.remove('edit-mode','scene-fast');
     var m = c.querySelector('#modal'); if (m) m.classList.remove('show');
     var pi = c.querySelector('#pw'); if (pi) pi.value = '';
     var pe = c.querySelector('#pwerr'); if (pe) pe.textContent = '';
@@ -1942,6 +2154,8 @@ html.js .cov{cursor:zoom-in;}
     var tlb = c.querySelector('#themeLbl'); if (tlb) tlb.textContent = 'Auto';
     var hp = c.querySelector('.hero-panel'); if (hp) hp.classList.remove('cangrab', 'grabbing');
     var eb = c.querySelector('#epiBtn'); if (eb){ eb.setAttribute('aria-pressed', 'false'); var ebb = eb.querySelector('b'); if (ebb) ebb.textContent = 'off'; }
+    c.documentElement && c.documentElement.classList.remove('scene-fast');
+    c.querySelectorAll('.research-object').forEach(function(x){ x.classList.remove('dragging'); x.style.removeProperty('--obj-rx'); x.style.removeProperty('--obj-ry'); });
     var fo = c.querySelector('#fxOut'); if (fo) fo.textContent = '';
     var cv = c.querySelector('#fx'); if (cv){ cv.removeAttribute('width'); cv.removeAttribute('height'); }
     var lb = c.querySelector('#lbx'); if (lb){ lb.classList.remove('show'); lb.setAttribute('aria-hidden', 'true'); }
