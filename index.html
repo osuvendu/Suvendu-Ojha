@@ -73,6 +73,10 @@ img{max-width:100%;display:block;}
 .rail-l{left:0;}
 .rail-r{right:0;transform:scaleX(-1);}
 @media (min-width:1600px){ .rail{display:block;} }
+@media (min-width:981px){
+  .nav{min-width:0;max-width:calc(100% - 250px);flex-wrap:wrap;justify-content:flex-end;row-gap:2px;}
+  .nav a{white-space:nowrap;}
+}
 .wm{position:absolute;pointer-events:none;z-index:0;color:var(--p-acc);opacity:.14;
   width:clamp(150px,17vw,250px);right:-18px;bottom:-26px;}
 .wm-tr{right:-14px;top:-24px;bottom:auto;}
@@ -776,12 +780,15 @@ html.js .research-object.dragging .research-object__depth{transition:none;}
     <button class="navtog" id="navtog" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="nav" id="nav" aria-label="Main">
       <a href="#about" class="">About</a>
-      <a href="#interests" class="">Research</a>
-      <a href="#education" class="">Training</a>
+      <a href="#current" class="">Current research</a>
+      <a href="#interests" class="">Interests</a>
+      <a href="#highlights" class="">Highlights</a>
+      <a href="#education" class="">Experience</a>
       <a href="#publications" class="">Publications</a>
       <a href="#patents" class="">Patents</a>
       <a href="#skills" class="">Skills</a>
       <a href="#awards" class="">Awards</a>
+      <a href="#presentations" class="">Presentations</a>
       <a href="#service" class="">Service</a>
       <a href="#contact" class="">Contact</a>
       <span class="nav-ind" id="navInd" aria-hidden="true"></span>
@@ -809,7 +816,7 @@ html.js .research-object.dragging .research-object__depth{transition:none;}
           <h1 class="hname">Suvendu Ojha</h1>
           <div class="hrole">Ph.D. in Biotechnology (Microbiology) · Research Associate-I</div>
           <div class="hwhere">Bacterial Cell Division &amp; Antimicrobial Resistance Lab, BRIC-Institute of Life Sciences, Bhubaneswar</div>
-          <p class="hline">I work on <em>how bacterial pathogens survive antibiotics</em> — the transport, signalling, metabolic and regulatory physiology behind resistance and tolerance, and what it takes to reverse it.</p>
+          <p class="hline">My research focuses on how bacterial pathogens survive antibiotic treatment, with particular interest in multidrug efflux systems, antibiotic resistance and tolerance, bacterial signalling, and metabolism. I also study compounds and therapeutic approaches that can interfere with these processes and improve antibiotic activity.</p>
           <div class="chips">
             <a class="chip" href="mailto:osuvendu@gmail.com">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#E0486B" d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13Zm2.7-.5 7.3 5.6L19.3 5H4.7ZM20 7.3l-7.4 5.7a1 1 0 0 1-1.2 0L4 7.3v11.2c0 .3.2.5.5.5h15c.3 0 .5-.2.5-.5V7.3Z"></path></svg>
@@ -862,19 +869,15 @@ html.js .research-object.dragging .research-object__depth{transition:none;}
         <span class="pico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a4.4 4.4 0 1 0 0-8.8 4.4 4.4 0 0 0 0 8.8Zm0 2c-3.9 0-7.4 2-7.4 4.6V21h14.8v-2.4C19.4 16 15.9 14 12 14Z"></path></svg></span>
         <div class="ptitles">
           <div class="peyebrow">About</div>
-          <h2 class="stitle">A microbiologist working on why antibiotics stop working.</h2>
+          <h2 class="stitle">Understanding how bacterial pathogens survive antibiotic treatment.</h2>
         </div>
       </div>
       <div class="prule"></div>
       <div class="about-grid">
         <div class="prose">
-          <p><span class="dcap">I</span>completed my PhD at BRIC-Institute of Life Sciences, Bhubaneswar, in 2025 and continue there as a Research Associate. My doctoral work asked how <span class="species">Staphylococcus aureus</span> uses multidrug efflux systems to survive antibiotic exposure, how those systems are wired into global transcriptional regulators such as MgrA, and whether that machinery can be switched off pharmacologically. Answering it meant building the whole chain of evidence myself — screening approved-drug and LOPAC libraries, tracing hits back to the regulators controlling pump expression, measuring direct protein–ligand binding by calorimetry and spectroscopy, reading out membrane energetics and biofilm consequences by flow cytometry and confocal microscopy, and finally asking in murine infection whether restored susceptibility survives contact with a host. Two compound series from that work became Indian patents, one granted in 2026.</p>
+          <p><span class="dcap">I</span> completed my PhD in Biotechnology (Microbiology) from the Regional Centre for Biotechnology, Faridabad, in 2025. I carried out my doctoral research at BRIC-Institute of Life Sciences, Bhubaneswar, where I studied the contribution of multidrug efflux systems to antibiotic resistance in <span class="species">Staphylococcus aureus</span>. I examined their regulation by global transcriptional regulators, particularly MgrA, and evaluated small molecules as potential efflux inhibitors. This work combined compound-library screening with protein-ligand studies, gene-expression analysis, membrane and biofilm assays, antibiotic susceptibility testing and murine infection models. It resulted in two Indian patent applications, one of which was granted in 2026.</p>
 
-          <p>My interests now sit a layer above any single pump. What holds my attention is the question of why a genetically susceptible organism can still survive treatment, and the physiology that decides it: <strong>nucleotide second messengers</strong> — c-di-AMP, c-di-GMP, (p)ppGpp — and the growth, stress and persistence programmes they control; <strong>bacterial metabolism</strong> and the metabolic adaptations that accompany infection, including metabolic vulnerabilities that might themselves be drug targets; <strong>antibiotic tolerance and persistence</strong> as phenomena genuinely distinct from resistance; and <strong>biofilms</strong> as a physiological state rather than a phenotype, particularly where biofilm physiology, metabolism and reduced susceptibility meet in chronic infection.</p>
-
-          <p>I am equally drawn to <strong>polymicrobial infection</strong> — how species compete, cooperate, signal and exchange metabolites when they share a host niche, and how any of that alters antibiotic susceptibility. Alongside it sits the regulatory biology that connects virulence, stress responses and survival: quorum sensing, global regulators, and the networks that let a cell change what it is doing in response to what is happening around it.</p>
-
-          <p>Running through all of it is a preference for mechanistic questions that keep a translational end attached. Efflux inhibitors, potentiators and adjuvants, metabolic and signalling targets, and repurposed compounds are the fastest route from a finding to something usable — and, just as importantly, they force honesty about whether a proposed mechanism actually matters in a living host. Alongside my own projects I have trained five doctoral and master's researchers at the bench, which I have come to enjoy more than I expected.</p>
+          <p>I currently work as a Research Associate-I in the same laboratory. My present work includes the preclinical evaluation of a montelukast-moxifloxacin combination against MRSA and the screening of compounds that may inhibit efflux pumps and biofilm formation. I am interested in understanding the mechanisms behind treatment failure and in determining whether compounds that improve antibiotic activity in laboratory assays also show benefit in infection models. Alongside my research, I have trained five doctoral and master's researchers in laboratory techniques, experimental design and data interpretation.</p>
         </div>
 
         <aside class="glance">
@@ -891,6 +894,44 @@ html.js .research-object.dragging .research-object__depth{transition:none;}
           </dl>
         </aside>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRENT RESEARCH -->
+<section class="sec" id="current">
+  <div class="container">
+    <div class="panel k-rose reveal vis" style="margin-bottom:var(--gap)">
+      <svg class="wm" viewBox="0 0 200 200" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="4">
+          <circle cx="100" cy="100" r="62"></circle>
+          <path d="M100 28v144M28 100h144M51 51l98 98M149 51l-98 98"></path>
+          <circle cx="100" cy="100" r="22"></circle>
+        </g>
+      </svg>
+      <div class="phead">
+        <span class="pico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"></path><circle cx="12" cy="12" r="8"></circle></svg></span>
+        <div class="ptitles">
+          <div class="peyebrow">Ongoing work</div>
+          <h2 class="stitle">Current research.</h2>
+        </div>
+      </div>
+      <div class="prule"></div>
+      <p class="sintro">My current work at BRIC-Institute of Life Sciences focuses on improving antibiotic activity against resistant bacteria and evaluating potential adjunctive compounds.</p>
+    </div>
+    <div class="vgrid">
+      <article class="vcard k-rose reveal vis tilt">
+        <span class="vnum">01</span>
+        <h3>Preclinical evaluation of montelukast-moxifloxacin combination against MRSA</h3>
+        <p class="tnote">Evaluating the antimicrobial activity and therapeutic potential of the combination, with studies on antibiotic susceptibility, pharmacokinetics and pharmacodynamics. The work examines bacterial burden, tissue drug exposure and host inflammatory responses during systemic infection.</p>
+        <div class="pmeta"><span class="bdg b-prep">Ongoing research</span><span class="pj">Antimicrobial efficacy · PK/PD · Infection models</span></div>
+      </article>
+      <article class="vcard k-teal reveal vis tilt">
+        <span class="vnum">02</span>
+        <h3>Screening for efflux pump and biofilm inhibitors</h3>
+        <p class="tnote">Screening and characterising small molecules for their effects on bacterial efflux activity and biofilm formation. The aim is to identify compounds that could be developed as adjuncts to existing antibiotics against resistant pathogens.</p>
+        <div class="pmeta"><span class="bdg b-prep">Ongoing research</span><span class="pj">Compound screening · Efflux · Biofilm</span></div>
+      </article>
     </div>
   </div>
 </section>
@@ -915,7 +956,7 @@ html.js .research-object.dragging .research-object__depth{transition:none;}
         </div>
       </div>
       <div class="prule"></div>
-      <p class="sintro">Three connected themes. The questions I find most interesting sit where they overlap.</p>
+      <p class="sintro">My research interests focus on three connected areas of bacterial physiology and antimicrobial research.</p>
       <div class="scene-controls" aria-label="3D illustration controls">
         <div class="scene-controls__intro"><span class="scene-live" aria-hidden="true"></span><span><b>Interactive 3D models</b><small>Drag an object to rotate it · use arrow keys when focused</small></span></div>
         <div class="scene-controls__actions">
@@ -936,12 +977,12 @@ html.js .research-object.dragging .research-object__depth{transition:none;}
         </div>
         <svg class="wm" viewBox="0 0 120 120" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="4"><circle cx="46" cy="50" r="22"></circle><circle cx="76" cy="74" r="17"></circle><circle cx="38" cy="84" r="14"></circle></g></svg>
         <span class="vnum">01</span>
-        <h3>Resistance, tolerance and chronic infection</h3>
+        <h3>Antimicrobial resistance, tolerance and persistence</h3>
         <ul>
-          <li>Mechanisms of antimicrobial resistance, and how it emerges and evolves</li>
-          <li>Multidrug efflux systems and the global regulators controlling their expression</li>
-          <li>Antibiotic tolerance and persistence as distinct from resistance</li>
-          <li>Biofilm formation, maturation and biofilm-associated tolerance</li>
+          <li>Mechanisms underlying antimicrobial resistance and its development in bacterial pathogens</li>
+          <li>Multidrug efflux systems and their regulation by global transcriptional regulators</li>
+          <li>Antibiotic tolerance and bacterial persistence, and their differences from conventional antimicrobial resistance</li>
+          <li>Biofilm development, maturation and the mechanisms contributing to biofilm-associated antibiotic tolerance</li>
         </ul>
       </article>
       <article class="vcard k-teal reveal vis tilt">
@@ -951,12 +992,13 @@ html.js .research-object.dragging .research-object__depth{transition:none;}
         </div>
         <svg class="wm" viewBox="0 0 120 120" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="4"><path d="M30 34c30 18 30 54 0 72M90 34c-30 18-30 54 0 72"></path><path d="M34 52h52M34 88h52"></path></g></svg>
         <span class="vnum">02</span>
-        <h3>Signalling, metabolism and microbial communities</h3>
+        <h3>Bacterial signalling, metabolism and polymicrobial interactions</h3>
         <ul>
-          <li>Nucleotide second messengers — c-di-GMP, c-di-AMP, (p)ppGpp — and the growth, stress and persistence programmes they control</li>
-          <li>Metabolic adaptation during infection, and metabolic vulnerabilities as potential targets</li>
-          <li>Polymicrobial interaction: competition, cooperation, cross-species signalling and metabolic exchange</li>
-          <li>Pathogenesis, virulence regulation and quorum sensing</li>
+          <li>Nucleotide second messengers, including c-di-AMP, c-di-GMP and (p)ppGpp, in the regulation of bacterial growth, stress responses and persistence</li>
+          <li>Bacterial metabolic pathways and metabolic adaptations during infection</li>
+          <li>Metabolic vulnerabilities that could be explored as potential antimicrobial targets</li>
+          <li>Polymicrobial interactions, including competition, cooperation, cross-species signalling and metabolic exchange</li>
+          <li>Quorum sensing, virulence regulation and bacterial responses to environmental changes</li>
         </ul>
       </article>
       <article class="vcard k-amber reveal vis tilt">
@@ -971,13 +1013,56 @@ html.js .research-object.dragging .research-object__depth{transition:none;}
         </div>
         <svg class="wm" viewBox="0 0 120 120" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="4"><path d="M48 24v26L28 92a8 8 0 0 0 7 12h50a8 8 0 0 0 7-12L72 50V24z"></path><path d="M44 24h32M38 74h44"></path></g></svg>
         <span class="vnum">03</span>
-        <h3>Antimicrobial discovery and therapeutic strategy</h3>
+        <h3>Antimicrobial drug discovery and therapeutic strategies</h3>
         <ul>
-          <li>Identification of novel antimicrobial targets</li>
-          <li>Efflux pump inhibitors, potentiators and adjuvants</li>
-          <li>Repurposing approved compounds against resistant pathogens</li>
-          <li>Combination therapies aimed at resistance, tolerance and biofilm survival</li>
+          <li>Identification of novel antimicrobial targets and pathways involved in bacterial survival</li>
+          <li>Discovery and characterisation of efflux pump inhibitors, antibiotic potentiators and adjuvants</li>
+          <li>Repurposing approved drugs against antimicrobial-resistant bacterial pathogens</li>
+          <li>Development of antibiotic combinations to improve antimicrobial activity and address resistance, tolerance and biofilm-associated survival</li>
         </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH HIGHLIGHTS -->
+<section class="sec" id="highlights">
+  <div class="container">
+    <div class="panel k-green reveal vis" style="margin-bottom:var(--gap)">
+      <svg class="wm" viewBox="0 0 200 200" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="4">
+          <path d="M100 18 122 72 180 78 136 117 148 176 100 145 52 176 64 117 20 78 78 72Z"></path>
+          <circle cx="100" cy="100" r="25"></circle>
+        </g>
+      </svg>
+      <div class="phead">
+        <span class="pico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"></path></svg></span>
+        <div class="ptitles">
+          <div class="peyebrow">Selected contributions</div>
+          <h2 class="stitle">Research highlights.</h2>
+        </div>
+      </div>
+      <div class="prule"></div>
+      <p class="sintro">A selection of published work from my research on efflux-mediated resistance and biofilm-associated survival in bacterial pathogens.</p>
+    </div>
+    <div class="vgrid">
+      <article class="vcard k-violet reveal vis tilt">
+        <span class="vnum">01</span>
+        <h3>Montelukast as an efflux-modulating antibiotic adjuvant</h3>
+        <p class="tnote">An efflux-focused screen identified montelukast as a compound that modulates the MgrA regulatory pathway. The study linked MgrA phosphorylation and reduced <span class="species">norB</span> expression to lower NorB-mediated efflux and improved moxifloxacin activity, including in a murine skin-infection model.</p>
+        <div class="pmeta"><span class="pj">EBioMedicine · 2025 · First author</span><a class="bdg b-doi" href="https://doi.org/10.1016/j.ebiom.2025.105658" target="_blank" rel="noreferrer">View paper ↗</a></div>
+      </article>
+      <article class="vcard k-amber reveal vis tilt">
+        <span class="vnum">02</span>
+        <h3>Oxiconazole and sertaconazole as efflux pump inhibitors</h3>
+        <p class="tnote">This work examined two FDA-approved azole antifungals as potential efflux pump inhibitors in <span class="species">S. aureus</span>. Both compounds reduced efflux activity and potentiated selected antibiotics without measurably compromising membrane integrity or bacterial growth.</p>
+        <div class="pmeta"><span class="pj">Antimicrobial Agents and Chemotherapy · 2025 · First author</span><a class="bdg b-doi" href="https://doi.org/10.1128/aac.00320-25" target="_blank" rel="noreferrer">View paper ↗</a></div>
+      </article>
+      <article class="vcard k-teal reveal vis tilt">
+        <span class="vnum">03</span>
+        <h3>10058-F4-mediated inhibition of biofilm formation</h3>
+        <p class="tnote">A compound-library screen identified 10058-F4 as an inhibitor of biofilm formation in multidrug-resistant <span class="species">S. aureus</span>. The study examined changes in biofilm-associated regulators and matrix genes. The compound inhibited biofilm formation but did not disperse established biofilms, and enhanced the activity of selected antibiotics.</p>
+        <div class="pmeta"><span class="pj">Biofilm · 2025 · Co-first author</span><a class="bdg b-doi" href="https://doi.org/10.1016/j.bioflm.2025.100307" target="_blank" rel="noreferrer">View paper ↗</a></div>
       </article>
     </div>
   </div>
@@ -1285,43 +1370,68 @@ html.js .research-object.dragging .research-object__depth{transition:none;}
       <div class="phead">
         <span class="pico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3h14v2h3v3a5 5 0 0 1-4.4 5 6 6 0 0 1-3.6 2.8V18h3v3H7v-3h3v-2.2A6 6 0 0 1 6.4 13 5 5 0 0 1 2 8V5h3V3Zm0 4H4v1a3 3 0 0 0 1.5 2.6A8 8 0 0 1 5 8V7Zm14 0v1c0 .9-.2 1.8-.5 2.6A3 3 0 0 0 20 8V7h-1Z"></path></svg></span>
         <div class="ptitles">
-          <div class="peyebrow">Awards</div>
+          <div class="peyebrow">Recognition</div>
           <h2 class="stitle">Awards and fellowships.</h2>
         </div>
       </div>
       <div class="prule"></div>
-      <p class="sintro">National fellowships, and recognition for the work presented at conferences.</p>
+      <p class="sintro">Research presentation awards and competitive national examination achievements.</p>
     </div>
     <div class="cards">
       <article class="ic k-amber reveal vis tilt">
         <h3>Best Poster Award</h3>
         <div class="org">National Symposium on One Health · BRIC-ILS</div>
-        <p class="det">11–12 September 2026 — “Montelukast restores fluoroquinolone susceptibility in multidrug-resistant <span class="species">S. aureus</span> by modulating the PknB–RsbU–MgrA regulatory axis.” BRIC-Institute of Life Sciences, Bhubaneswar.</p>
+        <p class="det">11-12 September 2026. Awarded for the poster titled “Montelukast restores fluoroquinolone susceptibility in multidrug-resistant <span class="species">S. aureus</span> by modulating the PknB-RsbU-MgrA regulatory axis.” BRIC-Institute of Life Sciences, Bhubaneswar.</p>
       </article>
       <article class="ic k-amber reveal vis tilt">
         <h3>Best Poster Award</h3>
         <div class="org">MECH2MED-2026 · IIT Kharagpur</div>
-        <p class="det">20–22 February 2026 — International Conference on Emerging Trends in Disease Biology: Mechanism to Medicine, Department of Bioscience &amp; Biotechnology, IIT Kharagpur.</p>
+        <p class="det">20-22 February 2026. International Conference on Emerging Trends in Disease Biology: Mechanism to Medicine, Department of Bioscience and Biotechnology, IIT Kharagpur.</p>
       </article>
       <article class="ic k-violet reveal vis tilt">
-        <h3>CSIR-NET (JRF) — All India Rank 77</h3>
-        <div class="org">Council of Scientific &amp; Industrial Research</div>
-        <p class="det">2019 — national doctoral fellowship examination. Held JRF and subsequently SRF through the PhD.</p>
+        <h3>CSIR-NET (JRF) · All India Rank 77</h3>
+        <div class="org">Council of Scientific and Industrial Research</div>
+        <p class="det">2019. Qualified for the Junior Research Fellowship and subsequently held the Senior Research Fellowship during doctoral research.</p>
       </article>
       <article class="ic k-violet reveal vis tilt">
-        <h3>GATE Life Sciences — All India Rank 745</h3>
+        <h3>GATE Life Sciences · All India Rank 745</h3>
         <div class="org">Graduate Aptitude Test in Engineering</div>
-        <p class="det">2018 — national postgraduate and doctoral entrance examination, India.</p>
+        <p class="det">2018. National-level examination for postgraduate and doctoral admissions in India.</p>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONFERENCE PRESENTATIONS -->
+<section class="sec" id="presentations">
+  <div class="container">
+    <div class="panel k-blue reveal vis" style="margin-bottom:var(--gap)">
+      <svg class="wm" viewBox="0 0 200 200" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="4">
+          <path d="M28 34h144v108H92l-38 28v-28H28z"></path>
+          <path d="M56 68h88M56 90h68M56 112h42"></path>
+        </g>
+      </svg>
+      <div class="phead">
+        <span class="pico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v13H8l-4 3z"></path><path d="M8 9h8M8 13h5"></path></svg></span>
+        <div class="ptitles">
+          <div class="peyebrow">Scientific meetings</div>
+          <h2 class="stitle">Conference presentations.</h2>
+        </div>
+      </div>
+      <div class="prule"></div>
+      <p class="sintro">Selected poster presentations at national and international scientific meetings.</p>
+    </div>
+    <div class="cards">
       <article class="ic k-teal reveal vis tilt">
         <h3>Targeting Efflux Machinery to Combat AMR</h3>
-        <div class="org">Poster · SRM University Delhi-NCR</div>
-        <p class="det">18–20 March 2024 — 3rd International Conference on Antimicrobial Resistance, Novel Drug Discovery and Vaccine Development, Sonepat.</p>
+        <div class="org">Poster presentation · 3rd International Conference on Antimicrobial Resistance, Novel Drug Discovery and Vaccine Development</div>
+        <p class="det">18-20 March 2024 · SRM University Delhi-NCR, Sonepat.</p>
       </article>
       <article class="ic k-green reveal vis tilt">
         <h3>Targeting Efflux Machinery to Combat AMR</h3>
-        <div class="org">Poster · QUAD mini-symposium</div>
-        <p class="det">27 April 2024 — Quarterly Union for Academic Discourse, BRIC-Institute of Life Sciences, Bhubaneswar.</p>
+        <div class="org">Poster presentation · QUAD mini-symposium</div>
+        <p class="det">27 April 2024 · Quarterly Union for Academic Discourse, BRIC-Institute of Life Sciences, Bhubaneswar.</p>
       </article>
     </div>
   </div>
